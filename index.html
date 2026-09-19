@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>EVERYWHERE — studio</title>
+<meta name="description" content="On ne vend pas des sites. On vous met partout.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>document.documentElement.className='js';</script>
+<style>
+:root{
+  --bg:#0f0f0c; --bg-2:#16160f; --panel:#1b1b13;
+  --ink:#f1eee2; --ink-2:#a7a598; --muted:#77756a;
+  --line:rgba(241,238,226,.13); --line-2:rgba(241,238,226,.28);
+  --lime:#ef5a24; --lime-2:#ff7a45; --lime-deep:#c2461a;
+  --display:'Bricolage Grotesque',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif; --mono:'Space Mono',ui-monospace,monospace;
+  --gut:clamp(18px,4vw,44px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+::selection{background:var(--lime);color:#0f0f0c}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.wrap{width:min(1320px,100% - 2*var(--gut));margin-inline:auto}
+.mono{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;text-transform:uppercase}
+.lime{color:var(--lime)}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:.92}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px var(--gut);transition:background .3s,border-color .3s}
+.nav.stuck{background:rgba(15,15,12,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .mk{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.03em}
+.nav .mk span{color:var(--lime)}
+.nav .links{display:flex;gap:26px;color:var(--ink-2)}
+.nav .links a:hover{color:var(--ink)}
+.nav .go{font-family:var(--mono);font-size:12px;text-transform:uppercase;font-weight:700;color:#0f0f0c;background:var(--lime);padding:10px 16px;border-radius:2px;transition:.2s}
+.nav .go:hover{background:var(--lime-2);transform:translateY(-1px)}
+@media(max-width:800px){.nav .links{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:110px 0 40px;overflow:hidden}
+.hero .lab{position:absolute;font-family:var(--mono);font-size:11px;text-transform:uppercase;color:var(--muted);letter-spacing:.06em}
+.hero .lab.tl{top:96px;left:var(--gut)} .hero .lab.tr{top:96px;right:var(--gut);text-align:right} .hero .lab.bl{bottom:30px;left:var(--gut)}
+.hero .lab b{color:var(--lime)}
+.hero h1{font-size:clamp(56px,12.5vw,205px);text-transform:none}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.05em}
+.hero h1 .line>span{display:inline-block;will-change:transform}
+.hero h1 .o{color:var(--ink-2)}
+.hero h1 em{font-style:normal;color:var(--lime)}
+.hero .sub{max-width:44ch;margin-top:26px;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;color:var(--ink-2);line-height:1.9;letter-spacing:.03em}
+.hero .row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:30px}
+.btn{font-family:var(--mono);font-weight:700;font-size:13px;text-transform:uppercase;padding:16px 26px;border-radius:2px;cursor:pointer;border:none;transition:.2s}
+.btn-l{background:var(--lime);color:#0f0f0c}.btn-l:hover{background:var(--lime-2);transform:translateY(-2px)}
+.reel{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--ink)}
+.reel .pl{width:38px;height:38px;border:1px solid var(--line-2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--lime);transition:.2s}
+.reel:hover .pl{background:var(--lime);color:#0f0f0c;border-color:var(--lime)}
+.reel .tc{color:var(--muted)}
+
+/* marquee */
+.marq{background:var(--bg-2);color:var(--ink);overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.marq .t{display:inline-block;font-family:var(--display);font-weight:800;font-size:clamp(22px,3.2vw,42px);padding:11px 0;animation:scroll 24s linear infinite}
+.marq .t span{padding:0 22px}.marq .t .dot{color:var(--lime);opacity:1}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* section head */
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:clamp(60px,9vh,110px) 0 26px}
+.sh h2{font-size:clamp(30px,5vw,62px);text-transform:uppercase}
+.sh .m{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--muted)}
+
+/* travail gallery */
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.wk{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);aspect-ratio:16/11}
+.wk img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s,filter .5s;filter:grayscale(.15)}
+.wk:hover img{transform:scale(1.05);filter:none}
+.wk .cap{position:absolute;left:0;right:0;bottom:0;padding:20px 14px 12px;display:flex;justify-content:space-between;align-items:flex-end;gap:8px;background:linear-gradient(transparent,rgba(10,10,8,.9))}
+.wk .cap .nm{font-family:var(--display);font-weight:700;font-size:19px;line-height:1}
+.wk .cap .mt{font-family:var(--mono);font-size:10px;text-transform:uppercase;color:var(--ink-2);margin-top:5px;display:block}
+.wk .cap .ar{font-family:var(--mono);font-size:14px;color:var(--lime)}
+.wk .no{position:absolute;top:12px;left:14px;font-family:var(--mono);font-size:11px;color:var(--lime);font-weight:700;z-index:2;mix-blend-mode:difference}
+.moreline{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:14px;padding-top:16px;font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--ink-2)}
+.moreline a{color:var(--lime)}
+@media(max-width:900px){.work{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.work{grid-template-columns:1fr}}
+
+/* studio manifesto */
+.studio{padding:clamp(60px,9vh,120px) 0}
+.studio .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:end}
+.studio h2{font-size:clamp(38px,7vw,104px);text-transform:uppercase}
+.studio h2 em{font-style:normal;color:var(--lime)}
+.studio .p{font-size:clamp(17px,1.7vw,21px);color:var(--ink-2);max-width:46ch;line-height:1.5}
+.studio .p b{color:var(--ink)}
+@media(max-width:820px){.studio .grid{grid-template-columns:1fr;gap:24px}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:8px}
+.stats .c{padding:clamp(26px,4vw,44px) 18px;border-right:1px solid var(--line)}
+.stats .c:last-child{border-right:none}
+.stats .v{font-family:var(--display);font-weight:800;font-size:clamp(38px,6vw,74px);line-height:.9;color:var(--lime)}
+.stats .l{font-family:var(--mono);font-size:11px;text-transform:uppercase;color:var(--muted);margin-top:12px}
+@media(max-width:640px){.stats{grid-template-columns:1fr 1fr}.stats .c:nth-child(2){border-right:none}.stats .c:nth-child(1),.stats .c:nth-child(2){border-bottom:1px solid var(--line)}}
+
+/* final */
+.final{padding:clamp(70px,11vh,150px) 0;text-align:center}
+.final h2{font-size:clamp(46px,10vw,150px);text-transform:uppercase}
+.final h2 em{font-style:normal;color:var(--lime)}
+.final .btn-l{margin-top:34px;font-size:14px;padding:18px 34px}
+
+/* footer */
+.foot{border-top:1px solid var(--line);padding:40px var(--gut) 46px}
+.foot .in{width:min(1320px,100%);margin-inline:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:flex-end}
+.foot .mk{font-family:var(--display);font-weight:800;font-size:clamp(40px,9vw,110px);line-height:.8;letter-spacing:-.03em}
+.foot .mk span{color:var(--lime)}
+.foot .col{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;color:var(--ink-2);line-height:2}
+.foot .col a:hover{color:var(--lime)}
+@media(max-width:560px){
+  .nav{padding:14px 18px}
+  .nav .mk{font-size:16px}
+  .nav .go{padding:9px 12px;font-size:10.5px}
+  .hero{padding-top:150px}
+  .hero .lab.tr{display:none}
+  .hero .lab.tl{font-size:10px}
+  .hero h1{font-size:46px}
+  .hero .sub{font-size:11.5px}
+  .sh h2{font-size:34px}
+  .studio h2{font-size:52px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="mk">EVERYWH<span>E</span>RE</div>
+  <div class="links mono"><a href="#travail">Le travail</a><a href="#studio">Le studio</a><a href="#final">Contact</a></div>
+  <a class="go" href="#final">On démarre →</a>
+</nav>
+
+<header class="hero">
+  <div class="lab tl">Studio numérique<br><b>43°N — Le Var</b></div>
+  <div class="lab tr">Est. 2026<br><b>(13) sites en ligne</b></div>
+  <div class="lab bl">↓ Faites défiler</div>
+  <div class="wrap">
+    <h1>
+      <span class="line"><span>On ne vend pas</span></span>
+      <span class="line"><span class="o">des sites.</span></span>
+      <span class="line"><span>On vous met <em>partout.</em></span></span>
+    </h1>
+    <p class="sub">Studio numérique — on met les commerçants d'exception en ligne. À leur nom, sur mesure, en deux heures.</p>
+    <div class="row">
+      <a class="btn btn-l" href="#final">On démarre →</a>
+      <a class="reel" href="#travail"><span class="pl">▶</span> Voir le travail <span class="tc">· 00:47</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="marq" aria-hidden="true"><div class="t">
+  <span>Everywhere</span><span class="dot">◆</span><span>Partout</span><span class="dot">◆</span><span>En ligne en 2h</span><span class="dot">◆</span><span>Sans commission</span><span class="dot">◆</span><span>Everywhere</span><span class="dot">◆</span><span>Partout</span><span class="dot">◆</span><span>En ligne en 2h</span><span class="dot">◆</span><span>Sans commission</span><span class="dot">◆</span>
+</div></div>
+
+<section id="travail"><div class="wrap">
+  <div class="sh"><h2>Le travail</h2><span class="m">(06) — sélection · aperçus en ligne</span></div>
+  <div class="work">
+    <a class="wk" href="https://flaverw.github.io/kayak-giens-apercu/" target="_blank" rel="noopener"><span class="no">001</span><img src="img/kayak.png" alt="Kayak Giens"><div class="cap"><div><span class="nm">Kayak Giens</span><span class="mt">Loueur kayak · Giens</span></div><span class="ar">↗</span></div></a>
+    <a class="wk" href="https://flaverw.github.io/red-burger-apercu/" target="_blank" rel="noopener"><span class="no">002</span><img src="img/redburger.png" alt="Red Burger"><div class="cap"><div><span class="nm">Red Burger</span><span class="mt">Burgers · Maubeuge</span></div><span class="ar">↗</span></div></a>
+    <a class="wk" href="https://flaverw.github.io/le-globe-apercu/" target="_blank" rel="noopener"><span class="no">003</span><img src="img/leglobe.png" alt="Le Globe"><div class="cap"><div><span class="nm">Le Globe</span><span class="mt">Brasserie · Maubeuge</span></div><span class="ar">↗</span></div></a>
+    <a class="wk" href="https://flaverw.github.io/jardizoo-apercu/" target="_blank" rel="noopener"><span class="no">004</span><img src="img/jardizoo.png" alt="Jardizoo"><div class="cap"><div><span class="nm">Jardizoo</span><span class="mt">Jardinerie · Hauts-de-France</span></div><span class="ar">↗</span></div></a>
+    <a class="wk" href="https://flaverw.github.io/micro-sos-apercu/" target="_blank" rel="noopener"><span class="no">005</span><img src="img/microsos.png" alt="Micro SOS"><div class="cap"><div><span class="nm">Micro SOS</span><span class="mt">Réparation info · Hautmont</span></div><span class="ar">↗</span></div></a>
+    <a class="wk" href="https://flaverw.github.io/smart-eco-apercu/" target="_blank" rel="noopener"><span class="no">006</span><img src="img/smarteco.png" alt="Smart Eco"><div class="cap"><div><span class="nm">Smart Eco</span><span class="mt">Électricien · Maubeuge</span></div><span class="ar">↗</span></div></a>
+  </div>
+  <div class="moreline"><span>Et 7 autres commerces déjà en ligne.</span><a href="#final">Voir tout (13) →</a></div>
+</div></section>
+
+<section id="studio" class="studio"><div class="wrap">
+  <div class="grid">
+    <h2>Pas une agence.<br>Un <em>studio.</em></h2>
+    <div>
+      <p class="p">On ne prend pas tout le monde. On <b>choisit</b> les commerçants qui font bien leur métier, et on les met <b>partout</b> — de leur vitrine à leur présence en ligne. En deux heures, ils existent. Le reste, c'est du soin.</p>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="c"><div class="v">2H</div><div class="l">En ligne</div></div>
+    <div class="c"><div class="v">13</div><div class="l">Sites en ligne</div></div>
+    <div class="c"><div class="v">0</div><div class="l">Commission</div></div>
+    <div class="c"><div class="v">∞</div><div class="l">Partout</div></div>
+  </div>
+</div></section>
+
+<section id="final" class="final"><div class="wrap">
+  <div class="mono" style="color:var(--muted);margin-bottom:18px">On vous écoute</div>
+  <h2>On vous met<br><em>partout ?</em></h2>
+  <a class="btn btn-l" href="#">Démarrer maintenant →</a>
+</div></section>
+
+<footer class="foot">
+  <div class="in">
+    <div class="mk">EVERYWH<span>E</span>RE</div>
+    <div class="col">
+      <div>Studio numérique · Le Var</div>
+      <div><a href="#travail">Le travail</a> · <a href="#studio">Le studio</a></div>
+      <a href="#">everywhere-digital.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var onS=function(){nav.classList.toggle('stuck',window.scrollY>40);};onS();window.addEventListener('scroll',onS,{passive:true});
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var lenis;
+  if(!reduce&&window.Lenis){lenis=new Lenis({lerp:.09});(function raf(t){lenis.raf(t);requestAnimationFrame(raf);})();}
+  if(reduce||!window.gsap)return;
+  gsap.registerPlugin(ScrollTrigger);
+  if(lenis&&window.ScrollTrigger)lenis.on('scroll',ScrollTrigger.update);
+  // hero entrance — lignes qui montent
+  gsap.timeline({delay:.15})
+    .from('.hero h1 .line>span',{yPercent:120,duration:1.15,ease:'expo.out',stagger:.12})
+    .from('.hero .sub',{y:22,opacity:0,duration:.9,ease:'power3.out'},'-=.55')
+    .from('.hero .row',{y:22,opacity:0,duration:.9,ease:'power3.out'},'-=.7')
+    .from('.hero .lab',{opacity:0,y:10,duration:.9,stagger:.1},'-=.8');
+  // révélations au scroll
+  gsap.utils.toArray('.sh, .studio h2, .studio .p, .moreline, .final .mono, .final h2, .final .btn-l').forEach(function(el){
+    gsap.from(el,{y:40,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+  // galerie — cartes en cascade
+  gsap.from('.wk',{y:60,opacity:0,duration:.9,ease:'power3.out',stagger:.09,scrollTrigger:{trigger:'.work',start:'top 84%'}});
+  gsap.from('.stats .c',{y:34,opacity:0,duration:.8,ease:'power3.out',stagger:.1,scrollTrigger:{trigger:'.stats',start:'top 90%'}});
+})();
+</script>
+</body>
+</html>
