@@ -237,9 +237,8 @@ section{padding:clamp(70px,10vh,130px) 0}
   if(reduce||!window.gsap)return;
   gsap.registerPlugin(ScrollTrigger);
   if(lenis&&window.ScrollTrigger)lenis.on('scroll',ScrollTrigger.update);
-  // hero entrance
-  gsap.from('.hero h1 .l, .hero h1 .roll',{y:44,opacity:0,duration:1.05,ease:'power3.out',stagger:.1,delay:.15});
-  gsap.from('.reel, .hstat',{y:24,opacity:0,duration:.9,ease:'power3.out',stagger:.14,delay:.85});
+  // hero visible d'emblée (pas de fondu qui pourrait rester bloqué si le rAF est throttlé) ;
+  // seule la ligne du milieu tourne.
   // scroll reveals
   gsap.utils.toArray('[data-rev]').forEach(function(t){
     gsap.from(t,{y:46,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:t,start:'top 88%'}});
